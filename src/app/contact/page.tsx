@@ -1,136 +1,252 @@
 'use client';
 
+import { useState } from 'react';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import AnimatedBackground from '@/components/AnimatedBackground';
 import styles from './ContactPage.module.css';
-import { Mail, Phone, MapPin, Send, ArrowRight } from 'lucide-react';
+import { Mail, Phone, MapPin, Send, ArrowRight, Loader2 } from 'lucide-react';
 import { motion } from 'framer-motion';
 
-export default function ContactPage() {
-    return (
-        <main className={styles.page}>
-            <AnimatedBackground />
-            <Navbar />
+const N8N_WEBHOOK_URL = "https://n8n.srv1147675.hstgr.cloud/webhook/Jobbe";
 
-            <section className={styles.section}>
+export default function ContactPage() {
+    const [isSubmitting, setIsSubmitting] = useState(false);
+    const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
+    const [formData, setFormData] = useState({
+        firstName: '',
+        lastName: '',
+        email: '',
+        businessName: '',
+        product: '',
+        message: ''
+    });
+
+    const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
+        setFormData(prev => ({
+            ...prev,
+            [e.target.name]: e.target.value
+        }));
+    };
+
+    const handleSubmit = async (e: React.FormEvent) => {
+        e.preventDefault();
+        setIsSubmitting(true);
+        setSubmitStatus('idle');
+
+        try {
+            const response = await fetch(N8N_WEBHOOK_URL, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    ...formData,
+                    submittedAt: new Date().toISOString(),
+                }),
+            });
+
+            if (!response.ok) {
+                throw new Error('Failed to submit form');
+            }
+
+            setSubmitStatus('success');
+            setFormData({
+                firstName: '',
+                lastName: '',
+                email: '',
+                businessName: '',
+                product: '',
+                message: ''
+            });
+        } catch (error) {
+            console.error('Form submission error:', error);
+            setSubmitStatus('error');
+        } finally {
+            setIsSubmitting(false);
+        }
+    };
+
+    return (
+        <>
+            <Navbar />
+            <AnimatedBackground />
+
+            <main className={styles.contactPage}>
                 <div className={styles.container}>
-                    <div className={styles.header}>
-                        <div className={styles.badge}>Get in Touch</div>
-                        <h1 className={styles.title}>Let’s Scale Your <span>Business.</span></h1>
+                    <motion.div 
+                        className={styles.header}
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.6 }}
+                    >
+                        <span className={styles.badge}>Get in Touch</span>
+                        <h1 className={styles.title}>Let's Scale Your Business.</h1>
                         <p className={styles.subtitle}>
                             Ready to stop missing calls and start booking more jobs? Send us a message and our team will get back to you within 24 hours.
                         </p>
-                    </div>
+                    </motion.div>
 
-                    <div className={styles.contactGrid}>
+                    <div className={styles.content}>
                         {/* LEFT: INFO */}
-                        <div className={styles.infoCol}>
-                            <motion.div
-                                className={styles.infoItem}
-                                initial={{ opacity: 0, x: -20 }}
-                                whileInView={{ opacity: 1, x: 0 }}
-                                viewport={{ once: true }}
-                            >
-                                <div className={styles.iconBox}><Mail size={24} /></div>
+                        <motion.div 
+                            className={styles.infoSection}
+                            initial={{ opacity: 0, x: -20 }}
+                            animate={{ opacity: 1, x: 0 }}
+                            transition={{ duration: 0.6, delay: 0.2 }}
+                        >
+                            <div className={styles.infoCard}>
+                                <Mail className={styles.icon} />
                                 <div>
-                                    <div className={styles.infoLabel}>Email Us</div>
-                                    <div className={styles.infoValue}>hello@jobbeiai.com</div>
+                                    <h3>Email Us</h3>
+                                    <p>hello@jobbeiai.com</p>
                                 </div>
-                            </motion.div>
-
-                            <motion.div
-                                className={styles.infoItem}
-                                initial={{ opacity: 0, x: -20 }}
-                                whileInView={{ opacity: 1, x: 0 }}
-                                viewport={{ once: true }}
-                                transition={{ delay: 0.1 }}
-                            >
-                                <div className={styles.iconBox}><Phone size={24} /></div>
-                                <div>
-                                    <div className={styles.infoLabel}>Call Us</div>
-                                    <div className={styles.infoValue}>(555) 123-4567</div>
-                                </div>
-                            </motion.div>
-
-                            <motion.div
-                                className={styles.infoItem}
-                                initial={{ opacity: 0, x: -20 }}
-                                whileInView={{ opacity: 1, x: 0 }}
-                                viewport={{ once: true }}
-                                transition={{ delay: 0.2 }}
-                            >
-                                <div className={styles.iconBox}><MapPin size={24} /></div>
-                                <div>
-                                    <div className={styles.infoLabel}>Office</div>
-                                    <div className={styles.infoValue}>123 Automation Way, <br />Austin, TX 78701</div>
-                                </div>
-                            </motion.div>
-
-                            <div style={{ marginTop: 'auto', padding: '32px', background: '#F9FAFB', borderRadius: '24px', border: '1px solid #E5E7EB' }}>
-                                <h4 style={{ fontWeight: 800, marginBottom: 12 }}>Trusted by Pros</h4>
-                                <p style={{ color: '#6B7280', fontSize: '0.9rem', lineHeight: 1.5 }}>
-                                    Join 100+ home service businesses using JOBBEI AI to dominate their local markets.
-                                </p>
                             </div>
-                        </div>
+
+                            <div className={styles.infoCard}>
+                                <Phone className={styles.icon} />
+                                <div>
+                                    <h3>Call Us</h3>
+                                    <p>(555) 123-4567</p>
+                                </div>
+                            </div>
+
+                            <div className={styles.infoCard}>
+                                <MapPin className={styles.icon} />
+                                <div>
+                                    <h3>Office</h3>
+                                    <p>123 Automation Way,<br />Austin, TX 78701</p>
+                                </div>
+                            </div>
+
+                            <div className={styles.trustBadge}>
+                                <h4>Trusted by Pros</h4>
+                                <p>Join 100+ home service businesses using JOBBEI AI to dominate their local markets.</p>
+                            </div>
+                        </motion.div>
 
                         {/* RIGHT: FORM */}
-                        <motion.div
-                            className={styles.formCard}
-                            initial={{ opacity: 0, y: 20 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: true }}
+                        <motion.div 
+                            className={styles.formSection}
+                            initial={{ opacity: 0, x: 20 }}
+                            animate={{ opacity: 1, x: 0 }}
+                            transition={{ duration: 0.6, delay: 0.3 }}
                         >
-                            <form className={styles.form} onSubmit={(e) => e.preventDefault()}>
-                                <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 20 }}>
-                                    <div className={styles.formGroup}>
-                                        <label className={styles.label}>First Name</label>
-                                        <input type="text" className={styles.input} placeholder="John" />
+                            <form className={styles.form} onSubmit={handleSubmit}>
+                                <div className={styles.row}>
+                                    <div className={styles.field}>
+                                        <label>First Name</label>
+                                        <input 
+                                            type="text" 
+                                            name="firstName"
+                                            value={formData.firstName}
+                                            onChange={handleChange}
+                                            placeholder="John" 
+                                            required 
+                                        />
                                     </div>
-                                    <div className={styles.formGroup}>
-                                        <label className={styles.label}>Last Name</label>
-                                        <input type="text" className={styles.input} placeholder="Doe" />
+                                    <div className={styles.field}>
+                                        <label>Last Name</label>
+                                        <input 
+                                            type="text" 
+                                            name="lastName"
+                                            value={formData.lastName}
+                                            onChange={handleChange}
+                                            placeholder="Doe" 
+                                            required 
+                                        />
                                     </div>
                                 </div>
 
-                                <div className={styles.formGroup}>
-                                    <label className={styles.label}>Business Email</label>
-                                    <input type="email" className={styles.input} placeholder="john@plumbing.com" />
+                                <div className={styles.field}>
+                                    <label>Business Email</label>
+                                    <input 
+                                        type="email" 
+                                        name="email"
+                                        value={formData.email}
+                                        onChange={handleChange}
+                                        placeholder="john@plumbing.com" 
+                                        required 
+                                    />
                                 </div>
 
-                                <div className={styles.formGroup}>
-                                    <label className={styles.label}>Business Name</label>
-                                    <input type="text" className={styles.input} placeholder="John's Plumbing" />
+                                <div className={styles.field}>
+                                    <label>Business Name</label>
+                                    <input 
+                                        type="text" 
+                                        name="businessName"
+                                        value={formData.businessName}
+                                        onChange={handleChange}
+                                        placeholder="Doe's Plumbing" 
+                                        required 
+                                    />
                                 </div>
 
-                                <div className={styles.formGroup}>
-                                    <label className={styles.label}>Interested Product</label>
-                                    <select className={styles.input} style={{ appearance: 'none' }}>
-                                        <option>AI Call Agent</option>
-                                        <option>Website Chat Agent</option>
-                                        <option>SMS FAQ Agent</option>
-                                        <option>Email Marketing Automation</option>
-                                        <option>SMS Marketing Automation</option>
-                                        <option>Full Automation Suite (Everything)</option>
+                                <div className={styles.field}>
+                                    <label>Interested Product</label>
+                                    <select 
+                                        name="product"
+                                        value={formData.product}
+                                        onChange={handleChange}
+                                        required
+                                    >
+                                        <option value="">Select a product</option>
+                                        <option value="AI Call Agent">AI Call Agent</option>
+                                        <option value="Website Chat Agent">Website Chat Agent</option>
+                                        <option value="SMS FAQ Agent">SMS FAQ Agent</option>
+                                        <option value="Email Marketing Automation">Email Marketing Automation</option>
+                                        <option value="SMS Marketing Automation">SMS Marketing Automation</option>
+                                        <option value="Full Automation Suite">Full Automation Suite (Everything)</option>
                                     </select>
                                 </div>
 
-                                <div className={styles.formGroup}>
-                                    <label className={styles.label}>How can we help?</label>
-                                    <textarea className={styles.textarea} placeholder="Tell us about your business and which AI agents you're interested in..."></textarea>
+                                <div className={styles.field}>
+                                    <label>How can we help?</label>
+                                    <textarea 
+                                        name="message"
+                                        value={formData.message}
+                                        onChange={handleChange}
+                                        placeholder="Tell us about your business needs..."
+                                        rows={4}
+                                        required
+                                    />
                                 </div>
 
-                                <button type="submit" className={styles.submitBtn}>
-                                    Send Message <Send size={18} />
+                                {submitStatus === 'success' && (
+                                    <div className={styles.successMessage}>
+                                        Thank you! We'll get back to you within 24 hours.
+                                    </div>
+                                )}
+
+                                {submitStatus === 'error' && (
+                                    <div className={styles.errorMessage}>
+                                        Something went wrong. Please try again.
+                                    </div>
+                                )}
+
+                                <button 
+                                    type="submit" 
+                                    className={styles.submitBtn}
+                                    disabled={isSubmitting}
+                                >
+                                    {isSubmitting ? (
+                                        <>
+                                            <Loader2 className="animate-spin" size={18} />
+                                            Sending...
+                                        </>
+                                    ) : (
+                                        <>
+                                            Send Message <ArrowRight size={18} />
+                                        </>
+                                    )}
                                 </button>
                             </form>
                         </motion.div>
                     </div>
                 </div>
-            </section>
+            </main>
 
             <Footer />
-        </main>
+        </>
     );
 }
