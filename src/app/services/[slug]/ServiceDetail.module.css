@@ -1,0 +1,445 @@
+.page {
+    min-height: 100vh;
+    background: #FFFFFF;
+    color: #111827;
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+}
+
+/* 2. HERO */
+.hero {
+    padding-top: 160px;
+    padding-bottom: 100px;
+    background: radial-gradient(circle at 100% 0%, rgba(0, 194, 209, 0.05) 0%, transparent 40%);
+}
+
+.container {
+    max-width: 1280px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 0 32px;
+}
+
+.heroContent {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: center;
+}
+
+.heroTag {
+    background: rgba(0, 194, 209, 0.1);
+    color: #0097A7;
+    padding: 4px 12px;
+    border-radius: 6px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    display: inline-block;
+    margin-bottom: 16px;
+}
+
+.heroTitle {
+    font-size: 3.5rem;
+    font-weight: 800;
+    line-height: 1.1;
+    color: #111827;
+    margin-bottom: 24px;
+}
+
+.heroTitle span {
+    color: #00C2D1;
+}
+
+.heroSubtitle {
+    font-size: 1.125rem;
+    line-height: 1.6;
+    color: #4B5563;
+    margin-bottom: 32px;
+    max-width: 540px;
+}
+
+.heroChecklist {
+    margin-bottom: 40px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.checkItem {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    color: #374151;
+    font-size: 0.9375rem;
+    font-weight: 500;
+}
+
+.checkIcon {
+    color: #00C2D1;
+}
+
+.heroBtn {
+    background: #00C2D1;
+    color: white;
+    padding: 16px 32px;
+    border-radius: 12px;
+    font-weight: 600;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    box-shadow: 0 10px 15px -3px rgba(0, 194, 209, 0.3);
+}
+
+.productCard {
+    background: white;
+    border: 1px solid #E5E7EB;
+    border-radius: 24px;
+    padding: 32px;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.08);
+}
+
+.animationWrapper {
+    height: 420px;
+    margin-bottom: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    border-radius: 12px;
+    /* Remove overflow hidden to prevent clipping of shadows */
+    padding: 20px;
+}
+
+/* 3. STATS */
+.statsSection {
+    background: #F9FAFB;
+    border-top: 1px solid #E5E7EB;
+    border-bottom: 1px solid #E5E7EB;
+    padding: 32px 0;
+}
+
+.statsGrid {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.statItem {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.statValue {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #111827;
+    margin-bottom: 2px;
+}
+
+.statLabel {
+    font-size: 0.8125rem;
+    color: #6B7280;
+    font-weight: 500;
+}
+
+/* 4. CAPABILITIES */
+.sectionPadding {
+    padding: 100px 0;
+}
+
+.capabilitiesGrid {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 80px;
+}
+
+.stickyHeader {
+    position: sticky;
+    top: 120px;
+    height: fit-content;
+}
+
+.sectionTitle {
+    font-size: 2.25rem;
+    font-weight: 800;
+    color: #111827;
+    margin-bottom: 16px;
+}
+
+.featureList {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+}
+
+.featureCard {
+    background: #FFFFFF;
+    border: 1px solid #E5E7EB;
+    border-radius: 16px;
+    padding: 24px;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.featureCard:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 20px -5px rgba(0, 0, 0, 0.05);
+}
+
+.featureIcon {
+    width: 40px;
+    height: 40px;
+    background: #F0FDFF;
+    color: #00C2D1;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 16px;
+}
+
+.featureTitle {
+    font-size: 1.0625rem;
+    font-weight: 700;
+    color: #111827;
+    margin-bottom: 8px;
+}
+
+.featureDesc {
+    font-size: 0.9375rem;
+    color: #6B7280;
+    line-height: 1.5;
+}
+
+/* 5. TRANSFORMATIONS */
+.transformGrid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 48px;
+}
+
+.resultCard {
+    background: #F0FDFF;
+    border: 1px solid #E0F2FE;
+    border-radius: 20px;
+    padding: 40px;
+}
+
+.metricValue {
+    font-size: 3.5rem;
+    font-weight: 800;
+    color: #00C2D1;
+    margin-bottom: 12px;
+}
+
+.metricLabel {
+    font-size: 1.125rem;
+    font-weight: 600;
+    color: #0097A7;
+}
+
+/* 6. COMPARISON */
+.comparisonSection {
+    background: #0B0E14;
+    padding: 140px 0;
+    color: white;
+}
+
+.comparisonGrid {
+    display: grid;
+    grid-template-columns: 1fr 2px 1fr;
+    gap: 80px;
+    align-items: center;
+}
+
+.comparisonSide {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    text-align: right;
+}
+
+.comparisonTag {
+    font-size: 0.75rem;
+    font-weight: 800;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+}
+
+.comparisonTitle {
+    font-size: 2.75rem;
+    font-weight: 800;
+    line-height: 1.2;
+}
+
+.comparisonDesc {
+    font-size: 1rem;
+    line-height: 1.6;
+    color: #9CA3AF;
+    max-width: 440px;
+}
+
+.comparisonSide:first-child .comparisonDesc {
+    margin-left: auto;
+}
+
+.comparisonList {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin-top: 24px;
+}
+
+.comparisonItem {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 0.9375rem;
+    font-weight: 500;
+}
+
+.comparisonDivider {
+    height: 100%;
+    background: #1F2937;
+}
+
+/* 7 & 9. STEPS */
+.stepsGrid {
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: center;
+    gap: 24px;
+    max-width: 1400px;
+    margin: 0 auto;
+    position: relative;
+    padding: 0 20px;
+}
+
+.stepCard {
+    text-align: center;
+    width: 170px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    z-index: 2;
+    /* Ensure steps are above connectors if needed */
+}
+
+.stepIcon {
+    width: 52px;
+    height: 52px;
+    background: #FFFFFF;
+    color: #00C2D1;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 24px;
+    font-size: 1rem;
+    font-weight: 800;
+    position: relative;
+    z-index: 2;
+    border: 1px solid rgba(0, 194, 209, 0.2);
+    box-shadow: 0 0 15px rgba(0, 194, 209, 0.05);
+    transition: all 0.3s ease;
+}
+
+.stepCard:hover .stepIcon {
+    border-color: #00C2D1;
+    box-shadow: 0 0 20px rgba(0, 194, 209, 0.2);
+    transform: scale(1.05);
+}
+
+/* PIPELINE CONNECTORS */
+.pipelineConnector {
+    position: absolute;
+    top: 50%;
+    left: 100%;
+    height: 2px;
+    background: linear-gradient(to right, #00C2D1, rgba(0, 194, 209, 0.1));
+    z-index: 0;
+    pointer-events: none;
+    opacity: 0.4;
+    transform-origin: left;
+}
+
+/* Remove connector on mobile or when it's the end of a row - simplified for now */
+@media (max-width: 1024px) {
+    .pipelineConnector {
+        display: none;
+    }
+}
+
+.stepContent {
+    font-size: 1rem;
+    font-weight: 700;
+    line-height: 1.6;
+    color: #111827;
+    max-width: 200px;
+    letter-spacing: -0.01em;
+    transition: color 0.3s ease;
+}
+
+.stepCard:hover .stepContent {
+    color: #00C2D1;
+}
+
+.stepFooter {
+    text-align: center;
+    margin-top: 64px;
+    font-weight: 700;
+    color: #00C2D1;
+    font-size: 0.9375rem;
+}
+
+/* 8. TESTIMONIALS */
+.testimonialGrid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+}
+
+.testimonialCard {
+    background: white;
+    border: 1px solid #E5E7EB;
+    border-radius: 20px;
+    padding: 32px;
+}
+
+/* 10. FAQ */
+.faqList {
+    max-width: 800px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.faqItem {
+    background: #FFFFFF;
+    border: 1px solid #E5E7EB;
+    border-radius: 16px;
+    padding: 24px;
+    transition: all 0.3s ease;
+}
+
+.faqItem:hover {
+    border-color: #00C2D1;
+    box-shadow: 0 10px 20px rgba(0, 194, 209, 0.05);
+}
+
+/* 11. FOOTER */
+.footer {
+    background: #F9FAFB;
+    padding: 80px 0 40px;
+    border-top: 1px solid #E5E7EB;
+}
+
+.footerGrid {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+    gap: 64px;
+    margin-bottom: 64px;
+}

@@ -1,0 +1,151 @@
+.footer {
+    background: #00282C;
+    color: #FFFFFF;
+    padding: 80px 20px 40px;
+    border-top: 1px solid rgba(0, 194, 209, 0.1);
+    position: relative;
+    overflow: hidden;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 2;
+}
+
+/* TOP GRID */
+.footerGrid {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+    gap: 60px;
+    margin-bottom: 80px;
+}
+
+/* BRAND COLUMN */
+.brandCol {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    color: white;
+}
+
+.tagline {
+    color: #9CA3AF;
+    line-height: 1.6;
+    max-width: 300px;
+    font-size: 0.95rem;
+}
+
+.socialRow {
+    display: flex;
+    gap: 16px;
+    margin-top: 10px;
+}
+
+.socialIcon {
+    width: 40px;
+    height: 40px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    transition: all 0.3s ease;
+}
+
+.socialIcon:hover {
+    background: rgba(0, 194, 209, 0.1);
+    border-color: #00C2D1;
+    color: #00C2D1;
+    transform: translateY(-2px);
+}
+
+/* LINK COLUMNS */
+.linkCol {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.colTitle {
+    font-size: 0.9rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #7EE7F2;
+}
+
+.linkList {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.link {
+    color: rgba(255, 255, 255, 0.7);
+    text-decoration: none;
+    font-size: 0.95rem;
+    transition: all 0.3s ease;
+    display: block;
+    width: fit-content;
+}
+
+.link:hover {
+    color: #00C2D1;
+    transform: translateX(4px);
+}
+
+/* BOTTOM BAR */
+.bottomBar {
+    padding-top: 40px;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.85rem;
+    color: #9CA3AF;
+}
+
+.legalLinks {
+    display: flex;
+    gap: 24px;
+}
+
+.legalLink {
+    cursor: pointer;
+    transition: color 0.2s ease;
+}
+
+.legalLink:hover {
+    color: white;
+}
+
+/* RESPONSIVE */
+@media (max-width: 900px) {
+    .footerGrid {
+        grid-template-columns: 1fr 1fr;
+        gap: 40px;
+    }
+}
+
+@media (max-width: 600px) {
+    .footerGrid {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+
+    .bottomBar {
+        flex-direction: column;
+        gap: 20px;
+        text-align: center;
+    }
+}

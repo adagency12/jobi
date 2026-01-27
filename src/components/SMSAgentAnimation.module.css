@@ -1,0 +1,108 @@
+.canvas {
+    width: 100%;
+    max-width: 400px;
+    height: 320px;
+    background: rgba(0, 194, 209, 0.03);
+    border: 1px solid rgba(0, 194, 209, 0.1);
+    border-radius: 32px;
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    position: relative;
+    overflow: hidden;
+}
+
+.smsHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 10px;
+    border-bottom: 1px solid rgba(0, 194, 209, 0.1);
+    font-size: 0.8rem;
+    color: #0097A7;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.bubble {
+    padding: 15px 20px;
+    border-radius: 20px;
+    font-size: 0.95rem;
+    line-height: 1.4;
+    max-width: 85%;
+    opacity: 0;
+    transform: translateY(10px);
+    transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.bubbleActive {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.customer {
+    background: #FFFFFF;
+    color: #1F2933;
+    align-self: flex-start;
+    border-bottom-left-radius: 2px;
+    border: 1px solid #E5E7EB;
+}
+
+.jobbei {
+    background: #00C2D1;
+    color: #FFFFFF;
+    align-self: flex-end;
+    border-bottom-right-radius: 2px;
+    font-weight: 600;
+}
+
+/* SYNC NOTIFICATION */
+.notification {
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    right: 20px;
+    background: white;
+    padding: 12px 15px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    box-shadow: 0 10px 30px rgba(0, 194, 209, 0.15);
+    transform: translateY(100px);
+    transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    z-index: 30;
+    border: 1px solid #E5E7EB;
+}
+
+.notifActive {
+    transform: translateY(0);
+}
+
+.notifIcon {
+    width: 32px;
+    height: 32px;
+    background: #00C2D1;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 0.8rem;
+}
+
+.notifText {
+    flex: 1;
+}
+
+.notifTitle {
+    font-weight: 800;
+    font-size: 0.8rem;
+    color: #1F2933;
+}
+
+.notifDesc {
+    font-size: 0.75rem;
+    color: #6B7280;
+}

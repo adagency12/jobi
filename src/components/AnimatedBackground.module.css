@@ -1,0 +1,95 @@
+.backgroundContainer {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    pointer-events: none;
+    z-index: -1;
+    background: #FFFFFF;
+    overflow: hidden;
+}
+
+.containerMode {
+    position: absolute;
+}
+
+.activeCanvas {
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+
+.grainOverlay {
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+    opacity: 0.06;
+    mix-blend-mode: multiply;
+    pointer-events: none;
+    z-index: 10;
+    animation: noise 0.2s infinite steps(2);
+}
+
+@keyframes noise {
+    0% {
+        transform: translate(0, 0);
+    }
+
+    10% {
+        transform: translate(-5%, -5%);
+    }
+
+    20% {
+        transform: translate(-10%, 5%);
+    }
+
+    30% {
+        transform: translate(5%, -10%);
+    }
+
+    40% {
+        transform: translate(-5%, 15%);
+    }
+
+    50% {
+        transform: translate(-10%, 5%);
+    }
+
+    60% {
+        transform: translate(15%, 0);
+    }
+
+    70% {
+        transform: translate(0, 10%);
+    }
+
+    80% {
+        transform: translate(-15%, 0);
+    }
+
+    90% {
+        transform: translate(10%, 5%);
+    }
+
+    100% {
+        transform: translate(5%, 0);
+    }
+}
+
+.patternOverlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: radial-gradient(rgba(11, 14, 20, 0.08) 1.5px, transparent 1.5px);
+    background-size: 32px 32px;
+    mask-image: radial-gradient(circle at 50% 50%, black 40%, transparent 100%);
+    -webkit-mask-image: radial-gradient(circle at 50% 50%, black 40%, transparent 100%);
+    pointer-events: none;
+    z-index: 5;
+}

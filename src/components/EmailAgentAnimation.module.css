@@ -1,0 +1,178 @@
+.canvas {
+    width: 100%;
+    max-width: 500px;
+    height: 300px;
+    background: #FFFFFF;
+    border: 1px solid #E5E7EB;
+    border-radius: 24px;
+    box-shadow: 0 40px 80px rgba(0, 194, 209, 0.05);
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    overflow: hidden;
+    color: #1F2933;
+}
+
+.emailHeader {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 25px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid #F7FAFC;
+}
+
+.icon {
+    width: 40px;
+    height: 40px;
+    background: rgba(0, 194, 209, 0.05);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    color: #00C2D1;
+}
+
+.title {
+    font-weight: 800;
+    font-size: 1rem;
+    letter-spacing: -0.01em;
+}
+
+.contentBody {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.placeholderLine {
+    height: 8px;
+    background: #F4F4F4;
+    border-radius: 4px;
+    width: 100%;
+}
+
+.aiMessage {
+    background: rgba(0, 194, 209, 0.05);
+    border-radius: 12px;
+    padding: 20px;
+    color: #0097A7;
+    font-size: 0.95rem;
+    font-weight: 700;
+    text-align: center;
+    border: 1px solid rgba(0, 194, 209, 0.1);
+    opacity: 0;
+    transform: translateY(10px);
+    transition: all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.aiMessageActive {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.pulse {
+    animation: pulseGlow 1.5s infinite;
+}
+
+@keyframes pulseGlow {
+    0% {
+        transform: scale(1);
+        opacity: 0.8;
+    }
+
+    50% {
+        transform: scale(1.02);
+        opacity: 1;
+    }
+
+    100% {
+        transform: scale(1);
+        opacity: 0.8;
+    }
+}
+
+.tagCloud {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 10px;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+}
+
+.tagCloudActive {
+    opacity: 1;
+}
+
+.tag {
+    background: #F7FAFC;
+    border: 1px solid #E5E7EB;
+    padding: 6px 12px;
+    border-radius: 6px;
+    font-size: 0.75rem;
+    color: #6B7280;
+    font-weight: 600;
+}
+
+.tagHighlight {
+    border-color: #00C2D1;
+    color: #0097A7;
+    background: rgba(0, 194, 209, 0.05);
+}
+
+.successOverlay {
+    position: absolute;
+    inset: 0;
+    background: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    z-index: 20;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.5s ease;
+}
+
+.successOverlayActive {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.check {
+    width: 60px;
+    height: 60px;
+    background: #00C2D1;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 2rem;
+    margin-bottom: 20px;
+    animation: pop 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+}
+
+@keyframes pop {
+    from {
+        transform: scale(0);
+    }
+
+    to {
+        transform: scale(1);
+    }
+}
+
+.roiBadge {
+    background: #00C2D1;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 100px;
+    font-weight: 800;
+    font-size: 1rem;
+    margin-top: 15px;
+}

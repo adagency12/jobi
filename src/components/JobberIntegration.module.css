@@ -1,0 +1,399 @@
+.jobberIntegration {
+    padding: 80px 20px;
+    background: transparent;
+}
+
+
+.container {
+    max-width: 1300px;
+    margin: 0 auto;
+    text-align: center;
+    position: relative;
+    z-index: 2;
+}
+
+.header {
+    margin-bottom: 50px;
+}
+
+
+.title {
+    font-size: 3.5rem;
+    font-weight: 900;
+    color: var(--foreground);
+    margin-bottom: 20px;
+    letter-spacing: -1px;
+}
+
+.subtitle {
+    font-size: 1.1rem;
+    color: var(--text-secondary);
+    max-width: 600px;
+    margin: 0 auto;
+    line-height: 1.6;
+}
+
+/* THE MOCKUP STAGE */
+.integrationStage {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 60px;
+    position: relative;
+}
+
+
+/* STEP COLUMN (Wrapper for Card + Label) */
+.stepColumn {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+}
+
+/* UI MOCKUP CARDS */
+.mockupCard {
+    width: 300px;
+    height: 420px;
+    background: #FFFFFF;
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.05);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    position: relative;
+    z-index: 2;
+    transition: transform 0.4s ease;
+}
+
+.jobbeiCard {
+    border-color: var(--primary);
+}
+
+.dataCard {
+    border-color: var(--primary);
+    transform: scale(1.05);
+    box-shadow: 0 25px 70px rgba(0, 194, 209, 0.1);
+    z-index: 3;
+}
+
+.jobberCard {
+    border-color: #4CAF50;
+}
+
+.integrationStage:hover .mockupCard {
+    transform: translateY(-5px);
+}
+
+/* Step Label Pill */
+.stepLabel {
+    margin-top: 24px;
+    background: var(--surface);
+    padding: 8px 24px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 800;
+    color: var(--text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    white-space: nowrap;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.03);
+}
+
+/* ARROW SPACER */
+.arrowSpacer {
+    color: var(--primary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+}
+
+.arrowIcon {
+    width: 24px;
+    height: 24px;
+    animation: bounceRight 1.5s infinite;
+}
+
+/* MOCKUP HEADER */
+.mockupHeader {
+    height: 50px;
+    padding: 0 16px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid var(--border);
+    background: var(--surface);
+}
+
+.appBrand {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-weight: 800;
+    font-size: 0.85rem;
+}
+
+.jobbeiBrand {
+    color: var(--primary);
+}
+
+.jobberBrand {
+    color: #4CAF50;
+}
+
+.trafficLights {
+    display: flex;
+    gap: 6px;
+}
+
+.light {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #E5E7EB;
+}
+
+.red {
+    background: #FF5f56;
+}
+
+.yellow {
+    background: #FFBD2E;
+}
+
+.green {
+    background: #27C93F;
+}
+
+/* MOCKUP BODY */
+.mockupBody {
+    flex: 1;
+    padding: 20px;
+    background: #FFFFFF;
+    display: flex;
+    flex-direction: column;
+}
+
+/* JOBBEI UI ELEMENTS */
+.chatThread {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.msg {
+    padding: 8px 12px;
+    border-radius: 10px;
+    font-size: 0.75rem;
+    max-width: 90%;
+    line-height: 1.4;
+}
+
+.msgAi {
+    background: var(--primary);
+    color: white;
+    align-self: flex-start;
+    border-bottom-left-radius: 2px;
+}
+
+.msgUser {
+    background: var(--surface);
+    color: var(--foreground);
+    border: 1px solid var(--border);
+    align-self: flex-end;
+    border-bottom-right-radius: 2px;
+}
+
+/* DATA CARD ELEMENTS */
+.leadExtract {
+    background: var(--surface);
+    border: 1px solid var(--primary);
+    border-radius: 12px;
+    padding: 16px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.extractLabel {
+    font-size: 0.7rem;
+    color: var(--primary);
+    font-weight: 800;
+    text-transform: uppercase;
+    margin-bottom: 12px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.dataRow {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.8rem;
+    margin-bottom: 8px;
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 8px;
+}
+
+.dataKey {
+    color: var(--text-secondary);
+}
+
+.dataVal {
+    font-weight: 700;
+    color: var(--foreground);
+}
+
+.syncStatus {
+    margin-top: auto;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.75rem;
+    color: var(--primary);
+    font-weight: 700;
+    justify-content: center;
+}
+
+.syncSpinner {
+    width: 16px;
+    height: 16px;
+    animation: spin 2s linear infinite;
+}
+
+/* JOBBER UI ELEMENTS */
+.jobberHeader {
+    font-size: 0.9rem;
+    font-weight: 700;
+    margin-bottom: 12px;
+    color: #333;
+}
+
+.requestForm {
+    background: #FAFAFA;
+    padding: 12px;
+    border-radius: 8px;
+    border: 1px solid #E5E7EB;
+    flex: 1;
+}
+
+.formField {
+    margin-bottom: 10px;
+}
+
+.fieldLabel {
+    font-size: 0.65rem;
+    color: #999;
+    margin-bottom: 4px;
+}
+
+.fieldInput {
+    height: 28px;
+    background: white;
+    border: 1px solid #E5E7EB;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    padding: 0 8px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: #333;
+}
+
+/* BENEFITS (Bottom) */
+.benefitsRow {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    margin-top: 20px;
+}
+
+.benefitItem {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+}
+
+.benefitIcon {
+    width: 50px;
+    height: 50px;
+    background: var(--surface);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--primary);
+    border: 1px solid var(--border);
+}
+
+.benefitText {
+    font-weight: 800;
+    color: var(--foreground);
+}
+
+/* ANIMATIONS */
+@keyframes bounceRight {
+
+    0%,
+    100% {
+        transform: translateX(0);
+    }
+
+    50% {
+        transform: translateX(5px);
+    }
+}
+
+@keyframes spin {
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+@media (max-width: 1024px) {
+    .integrationStage {
+        flex-direction: column;
+        gap: 30px;
+        height: auto;
+    }
+
+    .mockupCard {
+        width: 100%;
+        max-width: 280px;
+    }
+
+    .arrowSpacer {
+        transform: rotate(90deg);
+        height: 30px;
+    }
+
+    .benefitsRow {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .title {
+        font-size: 2.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .title {
+        font-size: 2rem;
+    }
+
+    .subtitle {
+        font-size: 1rem;
+    }
+
+    .mockupCard {
+        height: 380px;
+    }
+
+    .header {
+        margin-bottom: 30px;
+    }
+}

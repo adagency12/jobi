@@ -1,0 +1,778 @@
+.aiAgents {
+    padding: 80px 20px;
+    background: transparent;
+    position: relative;
+    z-index: 2;
+}
+
+
+.container {
+    max-width: 1300px;
+    margin: 0 auto;
+}
+
+.header {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+
+.title {
+    font-size: 3.5rem;
+    font-weight: 900;
+    color: var(--foreground);
+    margin-bottom: 1rem;
+    letter-spacing: -1px;
+}
+
+.tagline {
+    font-size: 1.1rem;
+    color: var(--primary);
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+/* THE GRID */
+.grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 30px;
+}
+
+/* RICH CARD */
+.card {
+    flex: 0 1 380px;
+    background: #FFFFFF;
+    border: 1px solid var(--border);
+    border-radius: 32px;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.03);
+    height: auto;
+    min-height: 600px;
+    position: relative;
+}
+
+.card:hover {
+    transform: translateY(-12px);
+    box-shadow: 0 30px 80px rgba(0, 194, 209, 0.1);
+    border-color: var(--primary);
+}
+
+/* Card Visual Header (The UI Area) */
+.uiHeader {
+    height: 280px;
+    background: var(--surface);
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.card:hover .uiHeader {
+    background: white;
+}
+
+/* Card Content Body */
+.cardBody {
+    padding: 30px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.agentHeader {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 16px;
+}
+
+.miniIcon {
+    width: 32px;
+    height: 32px;
+    background: rgba(0, 194, 209, 0.1);
+    color: var(--primary);
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1rem;
+}
+
+.agentName {
+    font-size: 1.25rem;
+    font-weight: 800;
+    color: var(--foreground);
+}
+
+.agentDescription {
+    font-size: 0.95rem;
+    color: var(--text-secondary);
+    line-height: 1.6;
+    margin-bottom: 24px;
+}
+
+/* Feature List */
+.featureList {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: auto;
+}
+
+.featureItem {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 0.85rem;
+    color: var(--foreground);
+    font-weight: 600;
+}
+
+.featureList svg {
+    width: 14px;
+    height: 14px;
+    color: var(--primary);
+}
+
+/* --- ANIMATED PROCESS VISUALIZATIONS --- */
+
+/* 1. CALL AGENT (Voice -> Sync) */
+.processContainer {
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+.stepOne {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    animation: flowStepOne 4s infinite;
+}
+
+.waveformContainer {
+    display: flex;
+    gap: 6px;
+    align-items: center;
+    height: 50px;
+}
+
+.wave {
+    width: 6px;
+    background: var(--primary);
+    border-radius: 4px;
+    animation: voiceWave 1s ease-in-out infinite;
+}
+
+.wave:nth-child(2) {
+    animation-delay: 0.1s;
+}
+
+.wave:nth-child(3) {
+    animation-delay: 0.2s;
+}
+
+.wave:nth-child(4) {
+    animation-delay: 0.3s;
+}
+
+.callLabel {
+    margin-top: 10px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--text-secondary);
+}
+
+.stepTwo {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    animation: flowStepTwo 4s infinite;
+    transform: translateY(20px);
+}
+
+.syncCard {
+    background: white;
+    padding: 16px 24px;
+    border-radius: 16px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.05);
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    border: 1px solid var(--border);
+    border-left: 4px solid #4CAF50;
+}
+
+.jobberLogo {
+    width: 32px;
+    height: 32px;
+    background: #4CAF50;
+    color: white;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 800;
+}
+
+.syncText {
+    text-align: left;
+}
+
+.syncTitle {
+    font-weight: 800;
+    color: var(--foreground);
+    font-size: 0.9rem;
+}
+
+.syncSub {
+    font-size: 0.7rem;
+    color: var(--text-secondary);
+}
+
+.checkCircle {
+    color: #4CAF50;
+    font-size: 1.2rem;
+    margin-left: auto;
+}
+
+/* 2. CHAT AGENT (Chat -> Capture) */
+.chatProcess {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    width: 80%;
+    position: relative;
+}
+
+.messageBubble {
+    padding: 10px 14px;
+    border-radius: 12px;
+    font-size: 0.8rem;
+    max-width: 90%;
+    opacity: 0;
+    animation: chatSlide 4s infinite;
+}
+
+.msgLeft {
+    align-self: flex-start;
+    background: white;
+    border: 1px solid var(--border);
+    border-bottom-left-radius: 2px;
+    animation-delay: 0s;
+}
+
+.msgRight {
+    align-self: flex-end;
+    background: var(--primary);
+    color: white;
+    border-bottom-right-radius: 2px;
+    animation-delay: 1s;
+}
+
+.captureForm {
+    background: white;
+    border: 1px solid var(--primary);
+    border-radius: 12px;
+    padding: 12px;
+    margin-top: 10px;
+    opacity: 0;
+    transform: translateY(10px);
+    animation: formPop 4s infinite;
+    animation-delay: 2.5s;
+    box-shadow: 0 4px 15px rgba(0, 194, 209, 0.1);
+}
+
+.formHeader {
+    font-size: 0.7rem;
+    color: var(--primary);
+    font-weight: 800;
+    margin-bottom: 8px;
+    text-transform: uppercase;
+}
+
+.formRow {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.75rem;
+    margin-bottom: 4px;
+    border-bottom: 1px solid var(--surface);
+    padding-bottom: 4px;
+}
+
+.formLabel {
+    color: var(--text-secondary);
+}
+
+.formValue {
+    font-weight: 700;
+    color: var(--foreground);
+}
+
+/* 3. SMS FAQ (Q -> Processing -> A) */
+.smsProcess {
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    align-items: center;
+}
+
+.smsBubble {
+    padding: 10px 14px;
+    border-radius: 16px;
+    font-size: 0.8rem;
+    max-width: 90%;
+}
+
+.smsCustomer {
+    align-self: flex-start;
+    background: white;
+    color: var(--foreground);
+    border: 1px solid var(--border);
+    opacity: 0;
+    animation: smsFadeIn 4s infinite 0.2s;
+}
+
+.processingDot {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.7rem;
+    color: var(--text-secondary);
+    opacity: 0;
+    animation: processFlash 4s infinite 1.2s;
+}
+
+.gearIcon {
+    animation: spin 2s linear infinite;
+    font-size: 1rem;
+    color: var(--primary);
+}
+
+.smsAi {
+    align-self: flex-end;
+    background: var(--primary);
+    color: white;
+    opacity: 0;
+    animation: smsFadeIn 4s infinite 2.5s;
+}
+
+/* 4. EMAIL MARKETING (Stacking) */
+.emailStack {
+    position: relative;
+    width: 220px;
+    height: 160px;
+}
+
+.emailItem {
+    position: absolute;
+    width: 100%;
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 12px;
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.03);
+    opacity: 0;
+    transform: translateY(20px) scale(0.9);
+}
+
+.emailIcon {
+    width: 30px;
+    height: 30px;
+    background: var(--surface);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.8rem;
+    color: var(--primary);
+}
+
+.emailText {
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: var(--foreground);
+}
+
+.email1 {
+    top: 0;
+    z-index: 1;
+    animation: stack1 4s infinite 0s;
+}
+
+.email2 {
+    top: 40px;
+    z-index: 2;
+    animation: stack2 4s infinite 1s;
+}
+
+.email3 {
+    top: 80px;
+    z-index: 3;
+    border-left: 3px solid var(--primary);
+    animation: stack3 4s infinite 2s;
+}
+
+/* 5. SMS MARKETING (Broadcast) */
+.campaignProcess {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 80%;
+}
+
+.audienceGroup {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.userDot {
+    width: 12px;
+    height: 12px;
+    background: var(--border);
+    border-radius: 50%;
+}
+
+.blastLine {
+    flex: 1;
+    height: 2px;
+    background: var(--surface);
+    margin: 0 16px;
+    position: relative;
+}
+
+.signal {
+    position: absolute;
+    left: 0;
+    top: -4px;
+    width: 10px;
+    height: 10px;
+    background: var(--primary);
+    border-radius: 50%;
+    animation: blastTravel 2s infinite;
+}
+
+.phoneGroup {
+    position: relative;
+    width: 80px;
+    height: 120px;
+}
+
+.phoneScreen {
+    position: absolute;
+    inset: 0;
+    background: var(--foreground);
+    border-radius: 8px;
+    border: 2px solid var(--text-secondary);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.7rem;
+    opacity: 0;
+}
+
+.phoneScreen:nth-child(1) {
+    animation: screenOne 2s infinite;
+}
+
+.phoneBooked {
+    background: #4CAF50;
+    border-color: #4CAF50;
+    animation: screenTwo 2s infinite;
+    font-weight: 800;
+}
+
+/* KEYFRAMES */
+@keyframes flowStepOne {
+
+    0%,
+    40% {
+        opacity: 1;
+        transform: scale(1);
+    }
+
+    50%,
+    100% {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+}
+
+@keyframes flowStepTwo {
+
+    0%,
+    40% {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    50% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    90% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    100% {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+}
+
+@keyframes voiceWave {
+
+    0%,
+    100% {
+        height: 15px;
+    }
+
+    50% {
+        height: 40px;
+    }
+}
+
+@keyframes chatSlide {
+    0% {
+        opacity: 0;
+        transform: translateX(-10px);
+    }
+
+    10% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+
+    90% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+
+    100% {
+        opacity: 0;
+    }
+}
+
+@keyframes formPop {
+    0% {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    20% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    80% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    100% {
+        opacity: 0;
+    }
+}
+
+@keyframes smsFadeIn {
+
+    0%,
+    10% {
+        opacity: 0;
+        transform: translateY(5px);
+    }
+
+    20%,
+    90% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    100% {
+        opacity: 0;
+    }
+}
+
+@keyframes processFlash {
+
+    0%,
+    10% {
+        opacity: 0;
+    }
+
+    20%,
+    80% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0;
+    }
+}
+
+@keyframes stack1 {
+    0% {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    10%,
+    90% {
+        opacity: 1;
+        transform: translateY(0) scale(0.9);
+    }
+
+    100% {
+        opacity: 0;
+    }
+}
+
+@keyframes stack2 {
+    0% {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    10%,
+    90% {
+        opacity: 1;
+        transform: translateY(0) scale(0.95);
+    }
+
+    100% {
+        opacity: 0;
+    }
+}
+
+@keyframes stack3 {
+    0% {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    10%,
+    90% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+
+    100% {
+        opacity: 0;
+    }
+}
+
+@keyframes blastTravel {
+    0% {
+        left: 0;
+        opacity: 1;
+    }
+
+    100% {
+        left: 100%;
+        opacity: 0;
+    }
+}
+
+@keyframes screenOne {
+
+    0%,
+    40% {
+        opacity: 1;
+    }
+
+    50%,
+    100% {
+        opacity: 0;
+    }
+}
+
+@keyframes screenTwo {
+
+    0%,
+    40% {
+        opacity: 0;
+    }
+
+    50%,
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes spin {
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+@media (max-width: 1024px) {
+    .card {
+        flex: 0 1 45%;
+    }
+}
+
+@media (max-width: 640px) {
+    .aiAgents {
+        padding: 60px 16px;
+    }
+
+    .header {
+        margin-bottom: 40px;
+    }
+
+    .title {
+        font-size: 2rem;
+        letter-spacing: -0.5px;
+    }
+
+    .tagline {
+        font-size: 0.85rem;
+        line-height: 1.5;
+        letter-spacing: 1px;
+    }
+
+    .card {
+        flex: 0 1 100%;
+        height: auto;
+        min-height: auto;
+    }
+
+    .uiHeader {
+        height: 200px;
+    }
+
+    .cardBody {
+        padding: 24px;
+    }
+
+    .processContainer,
+    .chatProcess,
+    .smsProcess,
+    .emailFlow,
+    .campaignProcess {
+        transform: scale(0.85);
+    }
+}

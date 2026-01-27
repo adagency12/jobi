@@ -1,0 +1,552 @@
+.page {
+    min-height: 100vh;
+    background: #FFFFFF;
+    color: #0B0E14;
+    font-family: var(--font-inter, 'Inter', -apple-system, sans-serif);
+    overflow-x: hidden;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 24px;
+}
+
+.sectionPadding {
+    padding: 80px 0;
+}
+
+/* 1. HERO SECTION */
+.hero {
+    padding: 120px 0 60px;
+    position: relative;
+    overflow: hidden;
+}
+
+.heroContent {
+    max-width: 800px;
+    position: relative;
+    z-index: 2;
+}
+
+.badge {
+    display: inline-block;
+    padding: 8px 16px;
+    background: #F0FDFF;
+    color: #4BABB3;
+    border-radius: 100px;
+    font-size: 0.75rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 32px;
+}
+
+.heroTitle {
+    font-size: 4.5rem;
+    font-weight: 950;
+    line-height: 1.05;
+    letter-spacing: -0.05em;
+    margin-bottom: 32px;
+    color: #0B0E14;
+}
+
+.heroTitle span {
+    color: #00C2D1;
+}
+
+.heroDesc {
+    font-size: 1.25rem;
+    line-height: 1.6;
+    color: #4B5563;
+    margin-bottom: 48px;
+    max-width: 600px;
+}
+
+.heroChecklist {
+    display: flex;
+    gap: 32px;
+    flex-wrap: wrap;
+}
+
+.checkItem {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    color: #0B0E14;
+    font-weight: 600;
+    font-size: 0.9375rem;
+}
+
+.checkIcon {
+    color: #00C2D1;
+}
+
+/* 2. PROBLEM SECTION */
+.problemSection {
+    background: #FFFFFF;
+    border-top: 1px solid #F3F4F6;
+}
+
+.problemGrid {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: 80px;
+    align-items: center;
+}
+
+/* MISSION SECTION */
+.missionSection {
+    background: #F9FAFB;
+    text-align: center;
+    padding: 80px 0;
+    border-top: 1px solid #F3F4F6;
+    border-bottom: 1px solid #F3F4F6;
+}
+
+.missionContent {
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.missionText {
+    font-size: 2.25rem;
+    font-weight: 800;
+    line-height: 1.3;
+    color: #0B0E14;
+    letter-spacing: -0.02em;
+}
+
+.missionText span {
+    color: #00C2D1;
+}
+
+.missionSubtext {
+    font-size: 1.25rem;
+    color: #4B5563;
+    margin-top: 40px;
+    line-height: 1.7;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.sectionLabel {
+    color: #00C2D1;
+    font-weight: 800;
+    text-transform: uppercase;
+    font-size: 0.875rem;
+    letter-spacing: 1px;
+    margin-bottom: 16px;
+}
+
+.sectionTitle {
+    font-size: 3rem;
+    font-weight: 900;
+    line-height: 1.1;
+    margin-bottom: 32px;
+    color: #0B0E14;
+}
+
+.problemText {
+    color: #4B5563;
+    font-size: 1.125rem;
+    line-height: 1.7;
+}
+
+.problemText strong {
+    color: #0B0E14;
+}
+
+.graphicBox {
+    background: #F9FAFB;
+    border: 1px solid #E5E7EB;
+    border-radius: 24px;
+    aspect-ratio: 1 / 0.8;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.pulsingCircle {
+    width: 200px;
+    height: 200px;
+    border: 2px solid #00C2D1;
+    border-radius: 50%;
+    position: relative;
+    animation: pulse 4s infinite ease-in-out;
+}
+
+.animationContainer {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    position: relative;
+}
+
+.stepWrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+}
+
+.stepIconBox {
+    width: 80px;
+    height: 80px;
+    background: #FFFFFF;
+    border: 1px solid #E5E7EB;
+    border-radius: 20px;
+    display: grid;
+    place-items: center;
+    color: #6B7280;
+    transition: all 0.5s ease;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+.activeStep .stepIconBox {
+    border-color: #00C2D1;
+    color: #00C2D1;
+    background: #F0FDFF;
+    box-shadow: 0 0 20px rgba(0, 194, 209, 0.2);
+    transform: scale(1.1);
+}
+
+.stepLabel {
+    font-size: 0.875rem;
+    font-weight: 800;
+    color: #9CA3AF;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: all 0.5s ease;
+}
+
+.activeStep .stepLabel {
+    color: #0B0E14;
+}
+
+.progressDots {
+    display: flex;
+    gap: 8px;
+    margin-top: 10px;
+}
+
+.dot {
+    width: 6px;
+    height: 6px;
+    background: #E5E7EB;
+    border-radius: 50%;
+    transition: all 0.3s ease;
+}
+
+.activeDot {
+    background: #00C2D1;
+    width: 18px;
+    border-radius: 4px;
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(0.95);
+        opacity: 0.3;
+    }
+
+    50% {
+        transform: scale(1.1);
+        opacity: 0.1;
+    }
+
+    100% {
+        transform: scale(0.95);
+        opacity: 0.3;
+    }
+}
+
+/* 3. ENGINEERING SECTION */
+.engineeringSection {
+    background: #0B0E14;
+    padding: 80px 0;
+    color: #FFFFFF;
+}
+
+.cardGrid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 32px;
+}
+
+.featureCard {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 40px;
+    border-radius: 20px;
+    transition: all 0.3s ease;
+}
+
+.featureCard:hover {
+    border-color: #00C2D1;
+    background: rgba(0, 194, 209, 0.1);
+    transform: translateY(-8px);
+}
+
+.cardIcon {
+    width: 48px;
+    height: 48px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 12px;
+    display: grid;
+    place-items: center;
+    color: #00C2D1;
+    margin-bottom: 24px;
+}
+
+.cardTitle {
+    font-size: 1.25rem;
+    font-weight: 800;
+    margin-bottom: 16px;
+    color: #FFFFFF;
+}
+
+.cardDesc {
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 0.95rem;
+    line-height: 1.6;
+}
+
+/* 4. JARGON-FREE (LIGHT SECTION) */
+.whiteSection {
+    background: #FFFFFF;
+    background-image: radial-gradient(#F3F4F6 1px, transparent 1px);
+    background-size: 32px 32px;
+    color: #0B0E14;
+    padding: 80px 0;
+    border-top: 1px solid #F3F4F6;
+    border-bottom: 1px solid #F3F4F6;
+}
+
+.jargonGrid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 100px;
+    align-items: center;
+}
+
+.jargonStats {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+.statCard {
+    padding: 32px;
+    border-radius: 20px;
+    background: #FFFFFF;
+    border: 1px solid #E5E7EB;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.statCard:hover {
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.08), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+    border-color: #00C2D1;
+}
+
+.statCardDark {
+    background: #0B0E14;
+    color: #FFFFFF;
+    border-color: #1F2937;
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.2);
+}
+
+.statCardDark:hover {
+    border-color: #00C2D1;
+    background: #0B0E14;
+}
+
+.statIcon {
+    width: 40px;
+    height: 40px;
+    background: #F9FAFB;
+    border-radius: 10px;
+    display: grid;
+    place-items: center;
+    color: #00C2D1;
+    margin-bottom: 4px;
+}
+
+.statCardDark .statIcon {
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.statTitle {
+    font-size: 1.5rem;
+    font-weight: 900;
+    letter-spacing: -0.02em;
+    line-height: 1.1;
+}
+
+.statTag {
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    font-weight: 800;
+    opacity: 0.6;
+    letter-spacing: 1px;
+}
+
+.statDesc {
+    font-size: 0.875rem;
+    color: #6B7280;
+    line-height: 1.4;
+}
+
+/* 5. WHY ELITE AI GRID */
+.whySection {
+    padding: 80px 0;
+    background: #FFFFFF;
+}
+
+/* AUDIENCE SECTION */
+.audienceSection {
+    padding: 80px 0;
+    background: #F9FAFB;
+}
+
+.audienceGrid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    margin-top: 64px;
+}
+
+.audienceCard {
+    padding: 40px;
+    background: #FFFFFF;
+    border: 1px solid #E5E7EB;
+    border-radius: 24px;
+    transition: all 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.audienceCard:hover {
+    border-color: #00C2D1;
+    transform: translateY(-8px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.05);
+}
+
+.audienceCard h4 {
+    font-size: 1.25rem;
+    font-weight: 900;
+    color: #0B0E14;
+}
+
+.audienceCard p {
+    color: #6B7280;
+    line-height: 1.5;
+    font-size: 0.95rem;
+}
+
+.audienceIcon {
+    color: #00C2D1;
+    margin-bottom: 8px;
+}
+
+/* VISION BANNER */
+.visionBanner {
+    padding: 100px 0;
+    background: #0B0E14;
+    color: #FFFFFF;
+    text-align: center;
+}
+
+.visionContent {
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.visionTitle {
+    font-size: 3rem;
+    font-weight: 900;
+    margin-bottom: 32px;
+    letter-spacing: -0.03em;
+}
+
+.visionText {
+    font-size: 1.25rem;
+    line-height: 1.7;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.valueGrid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 40px;
+    margin-top: 80px;
+}
+
+.valueItem {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.valueTitle {
+    font-size: 1.125rem;
+    font-weight: 800;
+    color: #0B0E14;
+}
+
+.valueDesc {
+    color: #6B7280;
+    font-size: 0.875rem;
+    line-height: 1.6;
+}
+
+
+@media (max-width: 1024px) {
+    .heroTitle {
+        font-size: 3.5rem;
+    }
+
+    .problemGrid,
+    .jargonGrid {
+        grid-template-columns: 1fr;
+        gap: 60px;
+    }
+
+    .cardGrid {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .valueGrid {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+@media (max-width: 768px) {
+    .heroTitle {
+        font-size: 2.75rem;
+    }
+
+    .cardGrid,
+    .valueGrid {
+        grid-template-columns: 1fr;
+    }
+
+    .finalTitle {
+        font-size: 2.5rem;
+    }
+
+    .btnGroup {
+        flex-direction: column;
+    }
+}
