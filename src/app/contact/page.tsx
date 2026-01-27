@@ -1,5 +1,6 @@
 'use client';
 
+import { useState } from 'react';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import AnimatedBackground from '@/components/AnimatedBackground';
@@ -8,6 +9,41 @@ import { Mail, Phone, MapPin, Send, ArrowRight } from 'lucide-react';
 import { motion } from 'framer-motion';
 
 export default function ContactPage() {
+    const [formData, setFormData] = useState({
+        firstName: '',
+        lastName: '',
+        email: '',
+        businessName: '',
+        interestedProduct: 'AI Call Agent',
+        message: ''
+    });
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        
+        try {
+            await fetch('https://n8n.srv1147675.hstgr.cloud/webhook/Jobbe', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(formData)
+            });
+            
+            alert('Message sent successfully!');
+            setFormData({
+                firstName: '',
+                lastName: '',
+                email: '',
+                businessName: '',
+                interestedProduct: 'AI Call Agent',
+                message: ''
+            });
+        } catch (error) {
+            alert('Failed to send message. Please try again.');
+        }
+    };
+
     return (
         <main className={styles.page}>
             <AnimatedBackground />
@@ -17,7 +53,7 @@ export default function ContactPage() {
                 <div className={styles.container}>
                     <div className={styles.header}>
                         <div className={styles.badge}>Get in Touch</div>
-                        <h1 className={styles.title}>Let’s Scale Your <span>Business.</span></h1>
+                        <h1 className={styles.title}>Let's Scale Your <span>Business.</span></h1>
                         <p className={styles.subtitle}>
                             Ready to stop missing calls and start booking more jobs? Send us a message and our team will get back to you within 24 hours.
                         </p>
@@ -82,31 +118,65 @@ export default function ContactPage() {
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
                         >
-                            <form className={styles.form} onSubmit={(e) => e.preventDefault()}>
+                            <form className={styles.form} onSubmit={handleSubmit}>
                                 <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 20 }}>
                                     <div className={styles.formGroup}>
                                         <label className={styles.label}>First Name</label>
-                                        <input type="text" className={styles.input} placeholder="John" />
+                                        <input 
+                                            type="text" 
+                                            className={styles.input} 
+                                            placeholder="John"
+                                            value={formData.firstName}
+                                            onChange={(e) => setFormData({...formData, firstName: e.target.value})}
+                                            required
+                                        />
                                     </div>
                                     <div className={styles.formGroup}>
                                         <label className={styles.label}>Last Name</label>
-                                        <input type="text" className={styles.input} placeholder="Doe" />
+                                        <input 
+                                            type="text" 
+                                            className={styles.input} 
+                                            placeholder="Doe"
+                                            value={formData.lastName}
+                                            onChange={(e) => setFormData({...formData, lastName: e.target.value})}
+                                            required
+                                        />
                                     </div>
                                 </div>
 
                                 <div className={styles.formGroup}>
                                     <label className={styles.label}>Business Email</label>
-                                    <input type="email" className={styles.input} placeholder="john@plumbing.com" />
+                                    <input 
+                                        type="email" 
+                                        className={styles.input} 
+                                        placeholder="john@plumbing.com"
+                                        value={formData.email}
+                                        onChange={(e) => setFormData({...formData, email: e.target.value})}
+                                        required
+                                    />
                                 </div>
 
                                 <div className={styles.formGroup}>
                                     <label className={styles.label}>Business Name</label>
-                                    <input type="text" className={styles.input} placeholder="John's Plumbing" />
+                                    <input 
+                                        type="text" 
+                                        className={styles.input} 
+                                        placeholder="John's Plumbing"
+                                        value={formData.businessName}
+                                        onChange={(e) => setFormData({...formData, businessName: e.target.value})}
+                                        required
+                                    />
                                 </div>
 
                                 <div className={styles.formGroup}>
                                     <label className={styles.label}>Interested Product</label>
-                                    <select className={styles.input} style={{ appearance: 'none' }}>
+                                    <select 
+                                        className={styles.input} 
+                                        style={{ appearance: 'none' }}
+                                        value={formData.interestedProduct}
+                                        onChange={(e) => setFormData({...formData, interestedProduct: e.target.value})}
+                                        required
+                                    >
                                         <option>AI Call Agent</option>
                                         <option>Website Chat Agent</option>
                                         <option>SMS FAQ Agent</option>
@@ -118,7 +188,13 @@ export default function ContactPage() {
 
                                 <div className={styles.formGroup}>
                                     <label className={styles.label}>How can we help?</label>
-                                    <textarea className={styles.textarea} placeholder="Tell us about your business and which AI agents you're interested in..."></textarea>
+                                    <textarea 
+                                        className={styles.textarea} 
+                                        placeholder="Tell us about your business and which AI agents you're interested in..."
+                                        value={formData.message}
+                                        onChange={(e) => setFormData({...formData, message: e.target.value})}
+                                        required
+                                    ></textarea>
                                 </div>
 
                                 <button type="submit" className={styles.submitBtn}>
