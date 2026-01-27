@@ -1,84 +1,13 @@
 'use client';
 
-import { useState } from 'react';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import AnimatedBackground from '@/components/AnimatedBackground';
 import styles from './ContactPage.module.css';
-import { Mail, Phone, MapPin, Send, ArrowRight, CheckCircle, AlertCircle } from 'lucide-react';
+import { Mail, Phone, MapPin, Send, ArrowRight } from 'lucide-react';
 import { motion } from 'framer-motion';
 
 export default function ContactPage() {
-    const [formData, setFormData] = useState({
-        firstName: '',
-        lastName: '',
-        email: '',
-        businessName: '',
-        interestedProduct: 'AI Call Agent',
-        message: ''
-    });
-    const [status, setStatus] = useState({ type: '', message: '' });
-    const [isSubmitting, setIsSubmitting] = useState(false);
-
-    const handleChange = (e) => {
-        const { name, value } = e.target;
-        setFormData(prev => ({
-            ...prev,
-            [name]: value
-        }));
-    };
-
-    const handleSubmit = async (e) => {
-        e.preventDefault();
-        setIsSubmitting(true);
-        setStatus({ type: '', message: '' });
-
-        try {
-            const response = await fetch('https://n8n.srv1147675.hstgr.cloud/webhook/Jobbe', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({
-                    firstName: formData.firstName,
-                    lastName: formData.lastName,
-                    email: formData.email,
-                    businessName: formData.businessName,
-                    interestedProduct: formData.interestedProduct,
-                    message: formData.message,
-                    timestamp: new Date().toISOString(),
-                    source: 'Contact Page'
-                })
-            });
-
-            if (response.ok) {
-                setStatus({
-                    type: 'success',
-                    message: 'Thanks for reaching out! We\'ll get back to you within 24 hours.'
-                });
-                // Reset form
-                setFormData({
-                    firstName: '',
-                    lastName: '',
-                    email: '',
-                    businessName: '',
-                    interestedProduct: 'AI Call Agent',
-                    message: ''
-                });
-            } else {
-                throw new Error('Failed to submit form');
-            }
-        } catch (error) {
-            setStatus({
-                type: 'error',
-                message: 'Oops! Something went wrong. Please try again or email us directly.'
-            });
-            console.error('Form submission error:', error);
-        } finally {
-            setIsSubmitting(false);
-        }
-    };
-
     return (
         <main className={styles.page}>
             <AnimatedBackground />
@@ -88,7 +17,7 @@ export default function ContactPage() {
                 <div className={styles.container}>
                     <div className={styles.header}>
                         <div className={styles.badge}>Get in Touch</div>
-                        <h1 className={styles.title}>Let's Scale Your <span>Business.</span></h1>
+                        <h1 className={styles.title}>Let’s Scale Your <span>Business.</span></h1>
                         <p className={styles.subtitle}>
                             Ready to stop missing calls and start booking more jobs? Send us a message and our team will get back to you within 24 hours.
                         </p>
@@ -153,87 +82,31 @@ export default function ContactPage() {
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
                         >
-                            <form className={styles.form} onSubmit={handleSubmit}>
-                                {status.message && (
-                                    <div style={{
-                                        padding: '16px',
-                                        borderRadius: '12px',
-                                        marginBottom: '24px',
-                                        display: 'flex',
-                                        alignItems: 'center',
-                                        gap: '12px',
-                                        backgroundColor: status.type === 'success' ? '#ECFDF5' : '#FEF2F2',
-                                        border: `1px solid ${status.type === 'success' ? '#10B981' : '#EF4444'}`,
-                                        color: status.type === 'success' ? '#065F46' : '#991B1B'
-                                    }}>
-                                        {status.type === 'success' ? <CheckCircle size={20} /> : <AlertCircle size={20} />}
-                                        <span>{status.message}</span>
-                                    </div>
-                                )}
-
+                            <form className={styles.form} onSubmit={(e) => e.preventDefault()}>
                                 <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 20 }}>
                                     <div className={styles.formGroup}>
                                         <label className={styles.label}>First Name</label>
-                                        <input
-                                            type="text"
-                                            name="firstName"
-                                            className={styles.input}
-                                            placeholder="John"
-                                            value={formData.firstName}
-                                            onChange={handleChange}
-                                            required
-                                        />
+                                        <input type="text" className={styles.input} placeholder="John" />
                                     </div>
                                     <div className={styles.formGroup}>
                                         <label className={styles.label}>Last Name</label>
-                                        <input
-                                            type="text"
-                                            name="lastName"
-                                            className={styles.input}
-                                            placeholder="Doe"
-                                            value={formData.lastName}
-                                            onChange={handleChange}
-                                            required
-                                        />
+                                        <input type="text" className={styles.input} placeholder="Doe" />
                                     </div>
                                 </div>
 
                                 <div className={styles.formGroup}>
                                     <label className={styles.label}>Business Email</label>
-                                    <input
-                                        type="email"
-                                        name="email"
-                                        className={styles.input}
-                                        placeholder="john@plumbing.com"
-                                        value={formData.email}
-                                        onChange={handleChange}
-                                        required
-                                    />
+                                    <input type="email" className={styles.input} placeholder="john@plumbing.com" />
                                 </div>
 
                                 <div className={styles.formGroup}>
                                     <label className={styles.label}>Business Name</label>
-                                    <input
-                                        type="text"
-                                        name="businessName"
-                                        className={styles.input}
-                                        placeholder="John's Plumbing"
-                                        value={formData.businessName}
-                                        onChange={handleChange}
-                                        required
-                                    />
+                                    <input type="text" className={styles.input} placeholder="John's Plumbing" />
                                 </div>
 
                                 <div className={styles.formGroup}>
                                     <label className={styles.label}>Interested Product</label>
-                                    <select
-                                        name="interestedProduct"
-                                        className={styles.input}
-                                        style={{ appearance: 'none' }}
-                                        value={formData.interestedProduct}
-                                        onChange={handleChange}
-                                        required
-                                    >
+                                    <select className={styles.input} style={{ appearance: 'none' }}>
                                         <option>AI Call Agent</option>
                                         <option>Website Chat Agent</option>
                                         <option>SMS FAQ Agent</option>
@@ -245,26 +118,11 @@ export default function ContactPage() {
 
                                 <div className={styles.formGroup}>
                                     <label className={styles.label}>How can we help?</label>
-                                    <textarea
-                                        name="message"
-                                        className={styles.textarea}
-                                        placeholder="Tell us about your business and which AI agents you're interested in..."
-                                        value={formData.message}
-                                        onChange={handleChange}
-                                        required
-                                    ></textarea>
+                                    <textarea className={styles.textarea} placeholder="Tell us about your business and which AI agents you're interested in..."></textarea>
                                 </div>
 
-                                <button
-                                    type="submit"
-                                    className={styles.submitBtn}
-                                    disabled={isSubmitting}
-                                    style={{
-                                        opacity: isSubmitting ? 0.7 : 1,
-                                        cursor: isSubmitting ? 'not-allowed' : 'pointer'
-                                    }}
-                                >
-                                    {isSubmitting ? 'Sending...' : 'Send Message'} <Send size={18} />
+                                <button type="submit" className={styles.submitBtn}>
+                                    Send Message <Send size={18} />
                                 </button>
                             </form>
                         </motion.div>
