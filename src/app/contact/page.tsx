@@ -18,7 +18,7 @@ export default function ContactPage() {
         message: ''
     });
 
-    const handleSubmit = async (e) => {
+    const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
         
         try {
